@@ -1,0 +1,389 @@
+/* ============================================================
+   CoVet Design System — Colors & Type
+   ============================================================ */
+
+/* ---- Webfonts ------------------------------------------------ */
+/* Plus Jakarta Sans — product UI (self-hosted from brand asset kit) */
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/PlusJakartaSans-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/PlusJakartaSans-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/PlusJakartaSans-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/PlusJakartaSans-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url('fonts/PlusJakartaSans-ExtraBold.ttf') format('truetype'); }
+
+/* Material Symbols Rounded — icons (CDN) */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-25..200&display=swap');
+
+/* CoVet's type system is a single family: Plus Jakarta Sans.
+   Display, body, meta, labels and code all use it — at different weights
+   (500 body, 600 labels/headings, 700–800 display) and sizes. Material
+   Symbols Rounded is loaded only as the icon font. No serif, no mono. */
+
+:root {
+  /* ---- Brand — seven-step cyan scale --------------------------
+     Stops: 100, 200, 400, 500, 600, 800, 1000 (no 300 / 700 / 900) */
+  --brand-100:  #E5F6FD;   /* lightest surface tint */
+  --brand-200:  #BDECFF;   /* cyan container */
+  --brand-400:  #71D3FE;   /* sky cyan — selected accents */
+  --brand-500:  #48BDEF;   /* brand cyan — primary hue */
+  --brand-600:  #00A9ED;   /* info / mid-scale cyan */
+  --brand-800:  #006D9B;   /* darker cyan — headings on light */
+  --brand-1000: #00374F;   /* deep teal — primary fill, reversed plates */
+
+  /* Semantic names mapped to the scale */
+  --covet-teal-deep:     var(--brand-1000);  /* primary action, reversed plates */
+  --covet-teal:          var(--brand-500);   /* brand cyan */
+  --covet-cyan-700:      #01A6DF;            /* logo endpoint */
+  --covet-cyan-600:      var(--brand-600);   /* info */
+  --covet-cyan:          var(--brand-400);   /* selected / accent */
+  --covet-cyan-200:      var(--brand-200);   /* cyan container */
+  --covet-cyan-50:       var(--brand-100);   /* cyan surface */
+
+  /* Legacy aliases — Figma M3 inheritance. Repoint purple → deep teal. */
+  --covet-purple:        var(--brand-1000);
+  --covet-purple-600:    var(--brand-500);
+  --covet-purple-hover:  #002435;
+
+  /* Logo gradient — teal → cyan (matches brand SVG) */
+  --covet-logo-gradient: linear-gradient(90deg, #01A6DF 0%, #00BBD1 50%, var(--brand-400) 100%);
+
+  /* ---- Neutrals — matches brand table (White + 100–600, 800, 900) --- */
+  --white:        #FFFFFF;
+  --neutral-100:  #FAFAFA;
+  --neutral-200:  #F2F4F8;   /* surface container */
+  --neutral-300:  #EBEDEF;   /* divider */
+  --neutral-400:  #E4E6E6;   /* outline */
+  --neutral-500:  #D7D9D9;
+  --neutral-600:  #CACCCC;   /* disabled / strong outline */
+  --neutral-800:  #7E7E7E;   /* fg secondary */
+  --neutral-900:  #57636C;   /* fg primary (cool dark) */
+  --black:        #202020;   /* brand "Black" — soft, not true #000 */
+
+  /* Legacy aliases */
+  --n-0:    #000000;
+  --n-10:   #1C1B1F;
+  --n-20:   var(--black);
+  --n-30:   #2B3232;
+  --n-50:   var(--neutral-900);
+  --n-60:   var(--neutral-800);
+  --n-80:   var(--neutral-600);
+  --n-90:   #DEE4E4;
+  --n-94:   var(--neutral-300);
+  --n-95:   var(--neutral-400);
+  --n-96:   var(--neutral-200);
+  --n-98:   var(--neutral-100);
+  --n-100:  var(--white);
+  --neutral-black:#000000;
+
+  /* ---- Semantic surfaces -------------------------------------- */
+  --surface:            var(--n-100);
+  --surface-dim:        var(--n-98);
+  --surface-container:  var(--n-96);
+  --surface-container-high: #EBEDEF;
+  --outline:            #7A7A7A;
+  --outline-variant:    var(--n-95);
+  --divider:            var(--n-94);
+
+  --fg:         var(--n-20);
+  --fg-muted:   var(--n-60);
+  --fg-inverse: var(--n-100);
+
+  --link:       var(--covet-cyan);
+  --link-hover: var(--covet-cyan-600);
+
+  /* ---- Semantic color roles (from brand color-rules table) ----
+     Use these in UI: text, text2, bg, surface, hint, outline,
+     outline-active, fixed-white-text, skeleton.
+     All map back to the neutrals scale above so swapping the
+     underlying palette cascades everywhere.
+     Dark-mode values live under [data-theme="dark"] below.       */
+  --bg:                 var(--white);              /* page background            */
+  --surface-card:       var(--neutral-100);        /* cards / elevated surfaces  */
+  --text:               var(--black);              /* primary text               */
+  --text-2:             var(--neutral-800);        /* secondary text             */
+  --hint:               var(--neutral-400);        /* placeholder / hint text    */
+  --outline-color:      var(--neutral-400);        /* borders + dividers         */
+  --outline-active:     var(--neutral-900);        /* focused / active borders   */
+  --fixed-white-text:   var(--white);              /* text that stays white on
+                                                      colored/brand surfaces
+                                                      regardless of theme       */
+  --skeleton:           var(--neutral-400);        /* skeleton loader fill       */
+
+  /* ---- Status (chip containers) ------------------------------- */
+  --status-review-bg:     #FFFFFF;
+  --status-review-border: #7A7A7A;
+  --status-review-fg:     #202020;
+
+  --status-export-bg:  #FDEECB;
+  --status-export-fg:  #6A4D0A;
+
+  --status-exported-bg: #BDECFF;
+  --status-exported-fg: #00374F;
+
+  --status-done-bg: #E4E6E6;
+  --status-done-fg: #202020;
+
+  /* ---- Semantic — Error / Warning / Success (5 steps each) ----- */
+  /* Error */
+  --error-lightest:      #FFE2E0;
+  --error-light:         #FF3C2F;
+  --error:               #D42620;   /* main */
+  --error-dark:          #AB281F;
+  --error-text-variant:  #FFBDB8;
+  /* Warning */
+  --warning-lightest:    #FFF6E8;
+  --warning-light:       #FFCC81;
+  --warning:             #FFA31A;
+  --warning-dark:        #B27212;
+  --warning-darkest:     #66410A;
+  /* Success */
+  --success-lightest:    #ECFDF5;
+  --success-light:       #70D5B3;
+  --success:             #10B981;
+  --success-dark:        #0B815A;
+  --success-darkest:     #064A34;
+  /* Info (brand-aligned cyan) */
+  --info:                #00A9ED;
+
+  /* Legacy semantic aliases */
+  --error-strong:        var(--error-light);
+  --error-container:     #FFDAD6;
+  --on-error:            #FFFFFF;
+  --on-error-container:  #571410;
+
+  /* ---- Shadows (Material elevation) --------------------------- */
+  --elev-1: 0 1px 2px rgba(0,0,0,.15), 0 1px 3px 1px rgba(0,0,0,.15);
+  --elev-2: 0 1px 2px rgba(0,0,0,.15), 0 2px 6px 2px rgba(0,0,0,.15);
+  --elev-3: 0 4px 8px 3px rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.30);
+  --shadow-panel: -4px 0 24px 2px rgba(0,0,0,.08);
+  --shadow-page: -4px 4px 40px 28px rgba(0,0,0,.04);
+  --scrim: rgba(32,32,32,.30);
+
+  /* ---- Radii — Figma Corner tokens --------------------------- */
+  --r-none:  0;
+  --r-xs:    4px;
+  --r-sm:    8px;
+  --r-md:    12px;
+  --r-lg:    16px;
+  --r-full:  1000px;
+
+  /* Legacy alias — `r-xl` (28) + `r-pill` still resolve cleanly. */
+  --r-xl:    28px;
+  --r-pill:  var(--r-full);
+
+  /* ---- Spacing ------------------------------------------------ */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-16: 64px;
+
+  /* ---- Motion ------------------------------------------------- */
+  --ease-standard:      cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized:    cubic-bezier(0.2, 0, 0, 1);
+  --ease-accel:         cubic-bezier(0.4, 0, 1, 1);
+  --ease-decel:         cubic-bezier(0, 0, 0.2, 1);
+  --dur-short: 150ms;
+  --dur-med:   250ms;
+  --dur-long:  400ms;
+
+  /* ---- Type families ------------------------------------------ */
+  --ff-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --ff-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --ff-mono: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --ff-icon: "Material Symbols Rounded";
+
+  /* ---- Type roles — CoVet baseline + emphasis -----------------
+     Baseline uses Semibold for headings/titles, Medium for body.
+     Emphasis swaps headlines/titles to Bold where called for.        */
+  --type-headline-m: 600 24px/30px var(--ff-sans);   /* -0.25 tracking */
+  --type-headline-s: 600 18px/24px var(--ff-sans);   /* -0.25 */
+  --type-title-l:    600 16px/20px var(--ff-sans);   /* -0.1 */
+  --type-title-m:    600 14px/18px var(--ff-sans);   /* -0.1 */
+  --type-title-s:    600 12px/15px var(--ff-sans);   /* -0.1 */
+  --type-body-m:     500 14px/18px var(--ff-sans);   /* -0.25 */
+  --type-body-s:     500 12px/15px var(--ff-sans);   /* -0.25 */
+
+  /* Emphasis variants (Bold) */
+  --type-headline-m-emph: 700 24px/30px var(--ff-sans);
+  --type-headline-s-emph: 700 18px/24px var(--ff-sans);
+  --type-title-s-emph:    700 12px/15px var(--ff-sans);
+
+  /* Type scale (product-first) */
+  --fs-10: 10px;   /* micro uppercase */
+  --fs-11: 11px;   /* tokens */
+  --fs-12: 12px;   /* meta */
+  --fs-14: 14px;   /* body */
+  --fs-16: 16px;   /* body-lg / section title */
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;   /* page title */
+  --fs-28: 28px;
+  --fs-32: 32px;   /* styles headline */
+  --fs-40: 40px;
+  --fs-56: 56px;
+}
+
+/* =================================================================
+   Dark theme — semantic roles re-pointed.
+   Wraps surfaces/text/outlines per the brand color-rules table.
+   Enable by setting data-theme="dark" on <html> or any container.
+   ================================================================= */
+[data-theme="dark"] {
+  /* Neutrals row */
+  --bg:                 #141A1F;          /* near-black page BG                  */
+  --surface-card:       #001623;          /* deep-cyan panel surface             */
+  --text:               var(--white);     /* primary text flips to white         */
+  --text-2:             var(--neutral-800);/* secondary stays neutral-800 (light gray) */
+  --hint:               #3F4849;          /* hint / placeholder in dark          */
+  --outline-color:      #2E3538;          /* subtle divider                      */
+  --outline-active:     var(--neutral-900);/* focused / active border             */
+  --fixed-white-text:   var(--black);     /* stays "fixed white" on accent, but
+                                             on dark the text on a lightened
+                                             accent should be dark — honors the
+                                             brand table                        */
+  --skeleton:           #323A3C;          /* skeleton loader                     */
+
+  /* keep old aliases coherent */
+  --surface:            var(--surface-card);
+  --fg:                 var(--text);
+  --fg-muted:           var(--text-2);
+  --outline:            var(--outline-color);
+  --divider:            var(--outline-color);
+}
+
+/* =================================================================
+   Semantic element styles — can be used as classes OR applied to
+   elements directly.
+   ================================================================= */
+
+html, body {
+  font-family: var(--ff-sans);
+  color: var(--fg);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings — Plus Jakarta Sans, tight tracking at display sizes */
+.ds-h1, h1 {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: var(--fs-32);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0;
+}
+.ds-h2, h2 {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: var(--fs-24);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0;
+}
+.ds-h3, h3 {
+  font-family: var(--ff-sans);
+  font-weight: 700;
+  font-size: var(--fs-20);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.ds-h4, h4 {
+  font-family: var(--ff-sans);
+  font-weight: 700;
+  font-size: var(--fs-16);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Body */
+.ds-body, p {
+  font-family: var(--ff-sans);
+  font-weight: 500;
+  font-size: var(--fs-14);
+  line-height: 1.4;
+  color: var(--fg);
+  margin: 0;
+}
+.ds-body-lg {
+  font-size: var(--fs-16);
+  line-height: 1.45;
+}
+.ds-meta {
+  font-family: var(--ff-sans);
+  font-weight: 700;
+  font-size: var(--fs-12);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--fg-muted);
+}
+.ds-micro {
+  font-family: var(--ff-sans);
+  font-weight: 500;
+  font-size: var(--fs-10);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+.ds-label {
+  font-family: var(--ff-sans);
+  font-weight: 500;
+  font-size: var(--fs-11);
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: var(--fg);
+}
+
+/* Mono / code */
+.ds-mono, code, pre {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-12);
+  font-weight: 500;
+  color: var(--fg);
+}
+
+/* Links (cyan underline, M3-ish) */
+.ds-link, a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color var(--dur-short) var(--ease-standard);
+}
+.ds-link:hover, a:hover { color: var(--link-hover); }
+
+/* Icon helper */
+.ds-icon {
+  font-family: var(--ff-icon);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.ds-icon--filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+/* Focus ring */
+.ds-focus-ring:focus-visible,
+:focus-visible {
+  outline: 3px solid var(--covet-teal-deep);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
