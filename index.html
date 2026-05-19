@@ -201,11 +201,22 @@
     stroke-width: 1.5;
     stroke-linecap: round;
     stroke-dasharray: 5 4;
-    opacity: 0.35;
+    opacity: 0;
     transition: opacity 160ms ease, stroke-width 160ms ease, stroke 160ms ease;
   }
+  /* Pins are dimmed until hovered or pinned */
+  .pin {
+    opacity: 0.6;
+    transition: transform 140ms cubic-bezier(0.2,0,0,1), box-shadow 140ms, opacity 140ms;
+  }
+  .pin:hover,
+  .pin.is-active,
+  .pin.is-pinned {
+    opacity: 1;
+  }
+
   /* When the stage is in a hover state, fade non-active paths further */
-  .stage.has-hover svg.arrows path.flow:not(.is-active):not(.is-pinned) { opacity: 0.12; }
+  .stage.has-hover svg.arrows path.flow:not(.is-active):not(.is-pinned) { opacity: 0; }
   svg.arrows path.flow.is-active {
     opacity: 1;
     stroke: var(--brand-1000);
@@ -221,10 +232,10 @@
     stroke-dasharray: none;
     filter: drop-shadow(0 2px 6px rgba(72,189,239,0.45));
   }
-  .stage.has-pin svg.arrows path.flow:not(.is-pinned):not(.is-active) { opacity: 0.12; }
-  .stage.has-pin .pin:not(.is-pinned):not(.is-active) { opacity: 0.35; }
+  .stage.has-pin svg.arrows path.flow:not(.is-pinned):not(.is-active) { opacity: 0; }
+  .stage.has-pin .pin:not(.is-pinned):not(.is-active) { opacity: 0.6; }
   /* Active pin variant when its partner-path is highlighted */
-  .stage.has-hover .pin:not(.is-active):not(.is-pinned) { opacity: 0.35; transition: opacity 160ms ease, transform 140ms; }
+  .stage.has-hover .pin:not(.is-active):not(.is-pinned) { opacity: 0.6; transition: opacity 160ms ease, transform 140ms; }
   .stage.has-hover .pin.is-active { opacity: 1; }
   .stage.has-hover .pin.is-pinned { opacity: 1; }
   /* Legend row hover/active state */
@@ -259,7 +270,7 @@
     display: grid;
     grid-template-columns: 30px 1fr;
     gap: 12px;
-    align-items: start;
+    align-items: center;
     padding: 10px 12px 10px 10px;
     background: white;
     border: 1px solid var(--neutral-300);
@@ -270,7 +281,6 @@
     display: flex; align-items: center; justify-content: center;
     color: white; font-size: 12px; font-weight: 800;
     background: var(--brand-1000);
-    margin-top: 1px;
   }
   .legend .num.new  { background: var(--success); }
   .legend .num.gone { background: var(--neutral-600); color: var(--black); }
@@ -508,7 +518,6 @@ items.forEach((it) => {
       `<span class="to">${it.to}</span>`;
   }
   body.appendChild(title);
-  body.appendChild(flow);
   row.appendChild(num);
   row.appendChild(body);
   row.dataset.n = it.n;
